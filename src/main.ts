@@ -1,5 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import sharedComponents from './components/shared'
 import router from './router'
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+
+app.use(router)
+
+app.use(sharedComponents)
+
+app.mount('#app')
