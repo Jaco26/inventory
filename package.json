@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "start": "node dist/server/server.js",
+    "dev:client": "vue-cli-service serve",
+    "dev:server": "concurrently \"tsc --watch --project ./src/server/\" \"nodemon dist/server/server.js\"",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vue-cli-service build",
+    "build:server": "tsc --build ./src/server/",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
