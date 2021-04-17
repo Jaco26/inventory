@@ -15,6 +15,7 @@
   <JRow>
     <JCol>
       <button @click="whatup">What's up server??</button>
+      {{res}}
     </JCol>
   </JRow>
 </template>
@@ -26,11 +27,13 @@ export default defineComponent({
     return {
       orgs: [],
       maintainers: [],
+      res: ''
     }
   },
   methods: {
-    whatup() {
-      return ''
+    async whatup() {
+      const res = await fetch('/api/ping')
+      this.res = await res.text()
     }
   }
 })
